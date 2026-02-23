@@ -29,15 +29,15 @@ export default function SidebarClient({
   const isActive = (path: string) => pathname ? pathname === path : serverIsActive(path)
 
   return (
-    <div className="flex h-screen bg-[#0a0a1a]">
+    <div className="flex h-screen bg-background">
       {/* Sidebar */}
       <aside
         className={`${
           isOpen ? "w-64" : "w-16"
-        } transition-all duration-300 bg-[#0a0a1a]/90 backdrop-blur-sm border-r border-cyan-500/30 flex flex-col`}
+        } transition-all duration-300 bg-card/90 backdrop-blur-sm border-r border-primary/30 flex flex-col`}
       >
         {/* Sidebar Header with Navbar Logo */}
-        <div className="p-4 border-b border-cyan-500/30">
+        <div className="p-4 border-b border-primary/30">
           <div className="flex items-center justify-between">
             {isOpen && (
               <Link href="/dashboard" className="flex items-center gap-2">
@@ -48,7 +48,7 @@ export default function SidebarClient({
                   height={32}
                   className="w-8 h-8"
                 />
-                <span className="text-lg font-bold text-cyan-300 italic">
+                <span className="text-lg font-bold text-primary italic">
                   DUO KEYBOARD
                 </span>
               </Link>
@@ -68,8 +68,8 @@ export default function SidebarClient({
                 href={item.href}
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                   active
-                    ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/50"
-                    : "text-gray-400 hover:text-cyan-300 hover:bg-cyan-500/10"
+                    ? "bg-primary/20 text-primary border border-primary/50"
+                    : "text-gray-400 hover:text-primary hover:bg-primary/10"
                 }`}
               >
                 <Icon className="w-5 h-5 flex-shrink-0" />

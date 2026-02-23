@@ -51,7 +51,7 @@ export default function HomePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0a0a1a] flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <Loading />
           <p className="text-gray-400 mt-4">Loading...</p>
@@ -61,7 +61,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white flex flex-col items-center justify-center p-8">
+    <div className="min-h-screen bg-background text-white flex flex-col items-center justify-center p-8">
       <Suspense fallback={
         <div className="text-center">
           <Loading />

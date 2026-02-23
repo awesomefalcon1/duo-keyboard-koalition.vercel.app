@@ -7,7 +7,7 @@ const slides = [
     title: "Soldering Basics",
     description:
       "Learn the fundamentals of soldering switches, diodes, and other components. Master proper technique, temperature control, and troubleshooting common issues.",
-    background: "bg-gradient-to-r from-cyan-600 via-blue-700 to-indigo-800",
+    background: "bg-gradient-to-r from-primary/80 via-[#CC8400] to-[#996400]",
     symbol: "🔌",
     symbolName: "Soldering",
   },
@@ -15,7 +15,7 @@ const slides = [
     title: "PCB Assembly",
     description:
       "Understand PCB layout, component placement, and assembly techniques. Learn how to read schematics and build your first custom keyboard PCB.",
-    background: "bg-gradient-to-r from-purple-900 to-indigo-900",
+    background: "bg-gradient-to-r from-primary/60 to-primary/40",
     symbol: "⚡",
     symbolName: "Electronics",
   },
@@ -23,7 +23,7 @@ const slides = [
     title: "Case Design",
     description:
       "Master 3D modeling and CAD design for keyboard cases. Learn about materials, manufacturing methods, and how to create ergonomic and aesthetic designs.",
-    background: "bg-gradient-to-r from-green-700 to-teal-600",
+    background: "bg-gradient-to-r from-primary/70 to-[#CC8400]",
     symbol: "🎨",
     symbolName: "Design",
   },
@@ -31,7 +31,7 @@ const slides = [
     title: "Firmware Programming",
     description:
       "Dive into QMK and VIA configuration. Learn to program custom keymaps, layers, and macros. Create advanced features like tap-dance and combos.",
-    background: "bg-gradient-to-r from-gray-700 to-gray-900",
+    background: "bg-gradient-to-r from-primary/50 to-gray-900",
     symbol: "💻",
     symbolName: "Code",
   },
@@ -39,7 +39,7 @@ const slides = [
     title: "Switch Modding",
     description:
       "Explore switch customization techniques including lubing, filming, and spring swapping. Learn how to achieve the perfect feel and sound for your keyboard.",
-    background: "bg-gradient-to-r from-orange-600 to-yellow-500",
+    background: "bg-gradient-to-r from-primary to-[#FFB84D]",
     symbol: "⌨️",
     symbolName: "Switches",
   },
@@ -47,7 +47,7 @@ const slides = [
     title: "Keycap Design",
     description:
       "Design custom keycap profiles and colorways. Learn about manufacturing processes, legends, and how to create unique aesthetic combinations.",
-    background: "bg-gradient-to-r from-pink-800 to-rose-600",
+    background: "bg-gradient-to-r from-primary/60 to-primary/40",
     symbol: "🎯",
     symbolName: "Keycaps",
   },
@@ -67,7 +67,7 @@ export default function WorkshopSlideshow() {
   return (
     <div className="max-w-xl mx-auto mt-10">
       <div
-        className={`p-8 rounded-lg shadow-lg text-white ${slides[currentSlide].background} border border-opacity-20 border-white relative overflow-hidden`}
+        className={`p-8 rounded-lg shadow-lg text-white ${slides[currentSlide].background} border border-primary/20 relative overflow-hidden`}
       >
         <div className="flex flex-col">
           <div className="absolute opacity-10 left-4 top-4 text-8xl">
@@ -87,7 +87,7 @@ export default function WorkshopSlideshow() {
       <div className="flex justify-between mt-6">
         <button
           onClick={prevSlide}
-          className="px-4 py-2 bg-cyan-500 rounded-lg text-white hover:bg-cyan-600 transition-all"
+          className="px-4 py-2 bg-primary rounded-lg text-black hover:bg-primary/90 transition-all font-semibold"
         >
           Previous
         </button>
@@ -96,14 +96,14 @@ export default function WorkshopSlideshow() {
             <span
               key={index}
               className={`w-2 h-2 rounded-full ${
-                currentSlide === index ? "bg-cyan-400" : "bg-gray-600"
+                currentSlide === index ? "bg-primary" : "bg-gray-600"
               }`}
             />
           ))}
         </div>
         <button
           onClick={nextSlide}
-          className="px-4 py-2 bg-cyan-500 rounded-lg text-white hover:bg-cyan-600 transition-all"
+          className="px-4 py-2 bg-primary rounded-lg text-black hover:bg-primary/90 transition-all font-semibold"
         >
           Next
         </button>

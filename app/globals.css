@@ -150,3 +150,16 @@ body {
 button:hover {
   box-shadow: 0 0 15px var(--primary-glow);
 }
+
+/* Loading component glow effects using CSS variables */
+.loading-glow-outer {
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.loading-glow-inner {
+  box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.loading-logo-glow {
+  filter: drop-shadow(0 0 15px var(--primary-glow));
+}

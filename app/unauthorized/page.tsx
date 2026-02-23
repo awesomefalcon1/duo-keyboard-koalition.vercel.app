@@ -69,14 +69,14 @@ export default function UnauthorizedPage() {
           {/* Login Button */}
           <Button
             onClick={handleLogin}
-            className="w-full bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-3 rounded-lg transition-colors mb-4"
+            className="w-full bg-primary hover:bg-primary/90 text-black font-bold py-3 rounded-lg transition-colors mb-4"
           >
             Log In Again
           </Button>
 
           {/* Trust Indicator */}
-          <div className="flex items-center justify-center gap-2 text-xs text-cyan-400/70">
-            <Shield className="w-3 h-3 text-cyan-400" />
+          <div className="flex items-center justify-center gap-2 text-xs text-primary/70">
+            <Shield className="w-3 h-3 text-primary" />
             <span>Secure Authentication</span>
           </div>
         </div>

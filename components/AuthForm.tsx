@@ -101,7 +101,7 @@ export default function AuthForm({
       <Button
         type="button"
         onClick={() => router.push(`/?view=${isSignUp ? 'signup' : 'signin'}`)}
-        className="bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-2 px-4 rounded-lg transition-colors"
+        className="bg-primary hover:bg-primary/90 text-black font-bold py-2 px-4 rounded-lg transition-colors"
       >
         {isSignUp ? "Sign Up" : "Sign In"}
       </Button>
