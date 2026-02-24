@@ -36,7 +36,7 @@ export default function DashboardPage() {
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
             <Image
-              src="/Aurajay - NoBG.png"
+              src="/aurajay.png"
               alt="Duo Keyboard Koalition Logo"
               width={48}
               height={48}

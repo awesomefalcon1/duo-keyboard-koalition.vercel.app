@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Duo Keyboard Koalition",
   description: "Duo Keyboard Koalition — community hub for keyboard creators and players",
   icons: {
-    icon: "/Aurajay - NoBG.png",
+    icon: "/aurajay.png",
   },
 };
 

@@ -44,7 +44,7 @@ export default function UnauthorizedPage() {
           {/* Logo */}
           <div className="flex items-center justify-center gap-3 mb-6">
             <Image
-              src="/Aurajay - NoBG.png"
+              src="/aurajay.png"
               alt="Duo Keyboard Koalition Logo"
               width={48}
               height={48}

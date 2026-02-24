@@ -42,7 +42,7 @@ export default function SidebarClient({
             {isOpen && (
               <Link href="/dashboard" className="flex items-center gap-2">
                 <Image
-                  src="/Aurajay - NoBG.png"
+                  src="/aurajay.png"
                   alt="Duo Keyboard Koalition Logo"
                   width={32}
                   height={32}
