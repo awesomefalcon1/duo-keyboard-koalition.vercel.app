@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useAuth } from "@/context/AuthContext"
 import Loading from "@/components/Loading"
 import HackathonCard, { type Hackathon } from "@/components/HackathonCard"
@@ -67,7 +67,7 @@ export default function Hackathons() {
   const [hackathons, setHackathons] = useState<Hackathon[]>([])
   const [filter, setFilter] = useState<FilterTab>("all")
   const [dataLoading, setDataLoading] = useState(true)
-  const supabase = createClient()
+  const supabase = useMemo(() => createClient(), [])
 
   useEffect(() => {
     if (!loading && !user) {
@@ -85,6 +85,7 @@ export default function Hackathons() {
           .select("*")
           .order("created_at", { ascending: false })
 
+        // Table missing or empty — show fallback
         if (error || !hackathonData?.length) {
           setHackathons(FALLBACK_HACKATHONS)
           setDataLoading(false)
@@ -100,7 +101,7 @@ export default function Hackathons() {
         const registeredSet = new Set<string>()
         for (const reg of regData ?? []) {
           countMap[reg.hackathon_id] = (countMap[reg.hackathon_id] ?? 0) + 1
-          if (reg.user_id === user!.id) registeredSet.add(reg.hackathon_id)
+          if (reg.user_id === user?.id) registeredSet.add(reg.hackathon_id)
         }
 
         setHackathons(
@@ -111,13 +112,14 @@ export default function Hackathons() {
           }))
         )
       } catch {
+        // Network error or table doesn't exist — show fallback
         setHackathons(FALLBACK_HACKATHONS)
       } finally {
         setDataLoading(false)
       }
     }
     fetchHackathons()
-  }, [user])
+  }, [user, supabase])
 
   if (loading) return <Loading />
   if (!user) return null
