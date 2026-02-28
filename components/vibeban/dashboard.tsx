@@ -62,6 +62,21 @@ export function Dashboard() {
   useEffect(() => {
     loadProjects();
     loadMyTasks();
+
+    // Realtime: refresh project list when projects table changes
+    const channel = supabase
+      .channel('vibeban-projects')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'projects' }, () => {
+        loadProjects();
+      })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'tasks' }, () => {
+        loadMyTasks();
+        loadProjectTasks();
+      })
+      .subscribe();
+
+    return () => { supabase.removeChannel(channel); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

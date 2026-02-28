@@ -42,6 +42,20 @@ export function TaskList({ projectId }: TaskListProps) {
         loadTasks();
         loadPrerequisites();
         loadRequirements();
+
+        // Realtime: push updates so all collaborators see changes instantly
+        const channel = supabase
+            .channel(`vibeban-tasks-${projectId}`)
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'tasks', filter: `project_id=eq.${projectId}` }, () => {
+                loadTasks();
+            })
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'task_prerequisites' }, () => {
+                loadPrerequisites();
+            })
+            .subscribe();
+
+        return () => { supabase.removeChannel(channel); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [projectId]);
 
     const loadTasks = async () => {

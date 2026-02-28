@@ -149,24 +149,24 @@ export function TaskCard({ task, onUpdate, onDelete, onCreateReview: _onCreateRe
 
   if (isEditing) {
     return (
-      <div className="bg-white dark:bg-gray-700 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-600">
+      <div className="bg-card/80 p-4 rounded-xl shadow-sm border border-primary/20 backdrop-blur-sm">
         <input
           type="text"
           value={editTitle}
           onChange={(e) => setEditTitle(e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg mb-3 text-sm font-semibold bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg mb-3 text-sm font-semibold bg-background text-white focus:ring-2 focus:ring-primary focus:border-transparent"
         />
         <textarea
           value={editDescription}
           onChange={(e) => setEditDescription(e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg mb-3 text-sm resize-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg mb-3 text-sm resize-none bg-background text-white focus:ring-2 focus:ring-primary focus:border-transparent"
           rows={3}
           placeholder="Description..."
         />
 
         <div className="grid grid-cols-2 gap-3 mb-3">
           <div>
-            <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Type</label>
+            <label className="text-xs font-medium text-gray-400 uppercase tracking-wide">Type</label>
             <select
               value={editType}
               onChange={(e) => setEditType(e.target.value as TaskType)}
@@ -178,7 +178,7 @@ export function TaskCard({ task, onUpdate, onDelete, onCreateReview: _onCreateRe
             </select>
           </div>
           <div>
-            <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Urgency</label>
+            <label className="text-xs font-medium text-gray-400 uppercase tracking-wide">Urgency</label>
             <select
               value={editUrgency}
               onChange={(e) => setEditUrgency(e.target.value as Urgency)}
@@ -194,7 +194,7 @@ export function TaskCard({ task, onUpdate, onDelete, onCreateReview: _onCreateRe
 
         <div className="grid grid-cols-2 gap-3 mb-3">
           <div>
-            <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Priority</label>
+            <label className="text-xs font-medium text-gray-400 uppercase tracking-wide">Priority</label>
             <select
               value={editPriority}
               onChange={(e) => setEditPriority(e.target.value as Priority)}
@@ -206,7 +206,7 @@ export function TaskCard({ task, onUpdate, onDelete, onCreateReview: _onCreateRe
             </select>
           </div>
           <div>
-            <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Est. Hours</label>
+            <label className="text-xs font-medium text-gray-400 uppercase tracking-wide">Est. Hours</label>
             <input
               type="number"
               value={editEstimatedHours}
@@ -218,7 +218,7 @@ export function TaskCard({ task, onUpdate, onDelete, onCreateReview: _onCreateRe
         </div>
 
         <div className="mb-4">
-          <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Due Date</label>
+          <label className="text-xs font-medium text-gray-400 uppercase tracking-wide">Due Date</label>
           <input
             type="date"
             value={editDueDate ? new Date(editDueDate).toISOString().split('T')[0] : ''}
@@ -228,9 +228,9 @@ export function TaskCard({ task, onUpdate, onDelete, onCreateReview: _onCreateRe
         </div>
 
         {/* Prerequisites section in edit mode */}
-        <div className="mb-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
+        <div className="mb-4 p-3 bg-background/60 rounded-lg border border-primary/20">
           <div className="flex items-center justify-between mb-2">
-            <label className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+            <label className="text-xs font-medium text-gray-400 uppercase tracking-wide">
               🔗 Prerequisites ({prereqTasks.length})
             </label>
             <div className="flex items-center gap-2">
@@ -274,13 +274,13 @@ export function TaskCard({ task, onUpdate, onDelete, onCreateReview: _onCreateRe
 
           {/* Prerequisite picker */}
           {showPrereqPicker && (
-            <div className="mt-2 border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
+            <div className="mt-2 border border-primary/30 rounded-lg overflow-hidden">
               <input
                 type="text"
                 value={prereqSearch}
                 onChange={(e) => setPrereqSearch(e.target.value)}
                 placeholder="Search tasks to add..."
-                className="w-full px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-b border-gray-300 dark:border-gray-600 focus:outline-none"
+                className="w-full px-3 py-2 text-sm bg-background text-white border-b border-primary/30 focus:outline-none"
                 autoFocus
               />
               <div className="max-h-40 overflow-y-auto">
@@ -291,7 +291,7 @@ export function TaskCard({ task, onUpdate, onDelete, onCreateReview: _onCreateRe
                     <button
                       key={t.id}
                       onClick={() => addPrerequisite(t.id)}
-                      className="w-full text-left px-3 py-2 text-sm hover:bg-blue-50 dark:hover:bg-blue-900/20 text-gray-700 dark:text-gray-300 border-b border-gray-100 dark:border-gray-700 last:border-b-0 transition-colors flex items-center gap-2"
+                      className="w-full text-left px-3 py-2 text-sm hover:bg-primary/10 text-gray-300 border-b border-primary/10 last:border-b-0 transition-colors flex items-center gap-2"
                     >
                       <span className={`w-2 h-2 rounded-full ${t.status === 'complete' ? 'bg-green-500' : 'bg-amber-500'}`}></span>
                       <span className="truncate">{t.title}</span>
@@ -304,7 +304,7 @@ export function TaskCard({ task, onUpdate, onDelete, onCreateReview: _onCreateRe
           )}
         </div>
 
-        <div className="flex gap-2 pt-2 border-t border-gray-200 dark:border-gray-600">
+        <div className="flex gap-2 pt-2 border-t border-primary/20">
           <button
             onClick={handleSave}
             className="px-4 py-1.5 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 font-medium transition-colors"
@@ -336,7 +336,7 @@ export function TaskCard({ task, onUpdate, onDelete, onCreateReview: _onCreateRe
 
   return (
     <div
-      className={`group bg-white dark:bg-gray-700 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-600 
+      className={`group bg-card/80 p-4 rounded-xl shadow-sm border border-primary/20 backdrop-blur-sm 
         border-l-4 ${getUrgencyStyle(task.urgency || 'medium')} 
         hover:shadow-md transition-all duration-200
         ${isComplete ? 'opacity-60' : ''}
@@ -361,13 +361,13 @@ export function TaskCard({ task, onUpdate, onDelete, onCreateReview: _onCreateRe
         <div className="flex-1 min-w-0">
           {/* Title row */}
           <div className="mb-1">
-            <h4 className={`font-semibold text-gray-900 dark:text-white text-sm truncate ${isComplete ? 'line-through' : ''}`}>
+            <h4 className={`font-semibold text-white text-sm truncate ${isComplete ? 'line-through' : ''}`}>
               {task.title}
             </h4>
           </div>
 
           {/* Assignee & Reporter */}
-          <div className="text-[11px] text-gray-500 dark:text-gray-400 mb-1 space-y-0.5">
+          <div className="text-[11px] text-gray-400 mb-1 space-y-0.5">
             <div>
               {task.assignee_id
                 ? (task.assignee_id === currentUserId ? 'Assigned to: Me' : 'Assigned')
@@ -414,7 +414,7 @@ export function TaskCard({ task, onUpdate, onDelete, onCreateReview: _onCreateRe
 
           {/* Description */}
           {task.description && (
-            <p className={`text-sm text-gray-500 dark:text-gray-400 line-clamp-2 mb-2 ${isComplete ? 'line-through' : ''}`}>
+            <p className={`text-sm text-gray-400 line-clamp-2 mb-2 ${isComplete ? 'line-through' : ''}`}>
               {task.description}
             </p>
           )}
@@ -443,19 +443,19 @@ export function TaskCard({ task, onUpdate, onDelete, onCreateReview: _onCreateRe
           )}
 
           {/* Tags row (bottom): type, due date, estimated hours */}
-          <div className="flex flex-wrap gap-1.5 text-xs mt-2 pt-2 border-t border-gray-100 dark:border-gray-600">
+          <div className="flex flex-wrap gap-1.5 text-xs mt-2 pt-2 border-t border-primary/10">
             <span className={`px-2 py-0.5 rounded-full font-medium ${typeInfo.color}`}>
               {typeInfo.label}
             </span>
             {task.due_date && (
               <span className={`px-2 py-0.5 rounded-md font-medium ${isOverdue
                 ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'
-                : 'bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-300'}`}>
+                : 'bg-primary/10 text-gray-300'}`}>
                 📅 {new Date(task.due_date).toLocaleDateString()}
               </span>
             )}
             {task.estimated_hours > 0 && (
-              <span className="px-2 py-0.5 rounded-md bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-300 font-medium">
+              <span className="px-2 py-0.5 rounded-md bg-primary/10 text-gray-300 font-medium">
                 ⏱️ {task.estimated_hours}h
               </span>
             )}
